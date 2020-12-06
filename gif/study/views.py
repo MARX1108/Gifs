@@ -6,8 +6,9 @@ from django.shortcuts import render
 def main_render(request):
     if request.POST.get('cmd') == 'reset':
         del request.session['step']
+    
 
-    if not "step" in request.session:
+    if request.POST.get('cmd') == 'reset':
         return setup(request)
     elif request.session['step'] >= 10:
         return end(request)
