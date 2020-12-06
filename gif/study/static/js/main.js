@@ -14,21 +14,35 @@ $(document).ready(function () {
         var xhr = $.get(res);
 
         xhr.done(function (data) {
-            console.log("success got data", data);
             const node = document.getElementById("gifresults");
             node.innerHTML = '';
             data = data.data;
-            // console.log("images url", data[i].images.downsized.url);
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i].embed_url);
-                var elem = document.createElement("img");
-                elem.setAttribute("src", data[i].images.downsized.url);
-                elem.setAttribute("class", "img-fluid w-25");
-                document.getElementById("gifresults").appendChild(elem);
-                // document.getElementById("imageid").src="../template/save.png";
+                // var elem = document.createElement("img");
+                // elem.setAttribute("id", i);
+                // elem.setAttribute("src", data[i].images.downsized.url);
+                // elem.setAttribute("class", "img-fluid w-25");
+                // document.getElementById("gifresults").appendChild(elem);
+                
+
+                $("<img>")
+                    .attr("src", data[i].images.downsized.url)
+                    .attr("class", "img-fluid w-25")
+                    .click(function(){ 
+                        console.log("clicked");
+                        var mainImage = $(this).attr("src"); //Find Image Name
+                        $("#main_img").attr({ src: mainImage });
+                    })
+                    .appendTo("#gifresults");
             }
         });
     });
 
+    $("#1").click(function() {
+        console.log("1 clicked");
+        var mainImage = $(this).attr("src"); //Find Image Name
+        $("#main_img").attr({ src: mainImage });
+        return false;      
+     });
 
 });
