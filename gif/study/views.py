@@ -4,19 +4,25 @@ from django.shortcuts import render
 
 
 def main_render(request):
+
+    if request.session.get('step', None) == None:
+        request.session['step'] = 0
+
     if request.POST.get('cmd') == 'reset':
         del request.session['step']
     
 
     if request.POST.get('cmd') == 'reset':
         return setup(request)
-    elif request.session['step'] >= 10:
+    elif request.session.get('step', None) >= 10:
         return end(request)
     else:
         return index(request)
 
 
 def index(request):
+    
+    
     request.session['step'] = request.session['step']+1
     return render(request, 'index.html', {
         'case_count': request.POST.get('step'),
