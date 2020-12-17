@@ -24,7 +24,7 @@ $(document).ready(function () {
         
         if(check){
             // $('#target').submit();
-            alert('One radio in each group is checked.');
+            // alert('One radio in each group is checked.');
         }else{
             alert('Please select one option in each question.');
             event.preventDefault();
