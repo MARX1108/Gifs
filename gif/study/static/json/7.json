@@ -1,0 +1,12 @@
+[
+    {
+        "payload": "This is my puppy!",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "Aww! so cute!",
+        "type": "right",
+        "highlight":true
+    }
+]

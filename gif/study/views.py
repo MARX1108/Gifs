@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.conf import settings
+
+import json
+import os
 
 # Create your views here.
 
@@ -21,12 +25,16 @@ def main_render(request):
 
 
 def index(request):
-    
-    
     request.session['step'] = request.session['step']+1
+    filename = "study/static/json/"+str(request.session['step']) + ".json"
+
+    with open(os.path.join(settings.BASE_DIR, filename)) as file:
+        sample = json.load(file)
+    # print(sample[1].get('payload'))
     return render(request, 'index.html', {
         'case_count': request.POST.get('step'),
-        'sample_id': '08'
+        'sample_id': '08',
+        'sample': sample
     })
 
 

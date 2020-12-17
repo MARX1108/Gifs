@@ -1,0 +1,34 @@
+[
+    {
+        "payload": "When are you coming back?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "You need to start packing.",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "Or we’re going to be late for the plane!",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "I’ll be back in an hour. ",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "We’re on time.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "Don’t panic",
+        "type": "right",
+        "highlight":true
+    }
+
+
+]

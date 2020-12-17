@@ -1,0 +1,22 @@
+[
+    {
+        "payload": "How did your physics exam go?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "Oh, it went really well!",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "Thanks for helping out!",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "No problem!",
+        "type": "left",
+        "highlight":true
+    }
+]

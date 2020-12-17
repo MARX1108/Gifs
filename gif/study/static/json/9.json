@@ -1,0 +1,17 @@
+[
+    {
+        "payload": "I finally quit my job today. ",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "They pay me late and I'm not enjoy the work I did at all..",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "That’s a good call.",
+        "type": "right",
+        "highlight":true
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "payload": "What’s your plan for New Year’s Eve?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "I bought a ticket to New York City.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "I’m going to see the city!",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "Sounds exciting!",
+        "type": "left",
+        "highlight":true
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "payload": "I’ve been on a zoom meeting for almost 9 hours now.",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "That’s insane.",
+        "type": "right",
+        "highlight":true
+    }
+]

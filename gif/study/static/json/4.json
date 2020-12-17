@@ -1,0 +1,22 @@
+[
+    {
+        "payload": "Have you finished the homework yet?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "No.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "There’re so many new concepts.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "I feel the same way.",
+        "type": "left",
+        "highlight":true
+    }
+]

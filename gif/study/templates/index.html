@@ -60,20 +60,76 @@
 
         </div>
         <div class="row">
-            <div class="col-md-4" style="padding: 0% 0% 0% 14%;">
+            <div class="col-md-4" style="padding: 0% 2% 0% 5%;">
                 <h1 class = "pb-4"> Sample {{sample_id}}</h1>
                 <div class="m-4">
-                    <div>
+                    <div class = "d-flex justify-content-center" >
+                        <img src="{% static "img/avatar.png"%} " alt="" class="img-fluid w-25" id = "main_img" style = "border-radius: 30px;">
+                    </div>
+
+                    <div class = "d-flex justify-content-center p-1 mb-2" style = "border-bottom: 1px solid #d4d4d4;">
                         Alex
                     </div>
-                    <p>
-                        How did you physics go?
-                    </p>
-                    <p>
-                        Oh it went really well!
-                    </p>
+                    {% for msg in sample %}
+                        {% if msg.type == "left" %}
+                            <div class = "d-flex justify-content-start mb-3">
+                                {% if msg.highlight %}
+                                <div class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
+                                    {{ msg.payload }}
+                                </div>
+                                {% else %}
+                                <div class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff; "">
+                                    {{ msg.payload }}
+                                </div>
+                                {% endif %}
+                                <!-- <div class="col-md-1" ></div> -->
+                                
+                            </div>
+                        {% elif msg.type == "right" %}
+                            <div class = "d-flex justify-content-end mb-3">
+                                {% if msg.highlight %}
+                                <div class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
+                                    {{ msg.payload }}
+                                </div>
+                                {% else %}
+                                <div class = "p-2 px-4" style = "background-color: #EDF6FD; border-radius: 30px;"">
+                                    {{ msg.payload }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        
+                    {% endfor %}
+
+                    <!-- <div class = "row p-2 w-100 float-left">
+                        <span class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff">
+                            How did you physics go?
+                        </span>
+                    </div>
+
+                    <div class = "row p-2 float-right">
+                        <span class = "p-2 px-4" style = "background-color: #EDF6FD; border-radius: 30px; ">
+                            Oh it went really well!
+                        </span>
+                    </div>
+                    
+                    <div class = "row p-2 w-100 float-left">
+                        <span class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff">
+                            Thanks for helping out!
+                        </span>
+                    </div>
+                    
+                    <div class = "row p-2 float-right">
+                        <p class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
+                            No problem!
+                        </p>
+                    </div>
+
+                    <div class = "row p-2 float-right">
+                        <img src="{% static "img/sample.gif"%} " alt="" class="img-fluid p-2 px-4" id = "main_img" style = "background-color: #F6D06F; border-radius: 30px; ">
+                    </div> -->
+
                 </div>
-                <img src="{% static "img/screenshot.png"%} " alt="" class="img-fluid">
             </div>
             <div class="col-md-4" >
                 <h1 class = "pb-4">  Gif</h1>
