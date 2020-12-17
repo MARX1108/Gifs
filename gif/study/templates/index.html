@@ -33,38 +33,31 @@
         </h1>
         <h2 class="display-5 pb-4" style="color: #4E4E4E; text-align: center; font-size: 20px;">Case {{request.session.step}}
         </h2>
+        <div class="text-center">Instruction</div>
+
         <div class="row pb-4 mb-4">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="text-center">Instruction</div>
-                
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        Step 1. Read over the conversation example in the Sample section.
-                        You're tasked with selecting a gif to replace the highlighted message.
-                    </li>
-                    <li class="list-group-item">
-                        Step 2. Type in the keyword in the search bar to search a gif. 
-                        Click 'search' button and a list of gifs will be shown.
-                        To select a gif, click on one of the gifs shown below search bar. 
-
-                    </li>
-                    <li class="list-group-item">
-                        Step 3. Once you select a gif, complete the survey on the survey section 
-                        and click "confirm" to submit your choice and answers.
-                    </li>
-
-                </ul>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                Step 1. Read over the conversation example in the Sample section.
+                You're tasked with selecting a gif to replace the highlighted message.
             </div>
-            <div class="col-md-3"></div>
-
+            <div class="col-md-4">
+                Step 2. Type in the keyword in the search bar to search a gif. 
+                Click 'search' button and a list of gifs will be shown.
+                To select a gif, click on one of the gifs shown below search bar. 
+            </div>
+            <div class="col-md-3">
+                Step 3. Once you select a gif, complete the survey on the survey section 
+                        and click "confirm" to submit your choice and answers.
+            </div>
+            <div class="col-md-1"></div>
         </div>
         <div class="row">
             <div class="col-md-4" style="padding: 0% 2% 0% 5%;">
                 <h1 class = "pb-4"> Sample {{sample_id}}</h1>
                 <div class="m-4">
                     <div class = "d-flex justify-content-center" >
-                        <img src="{% static "img/avatar.png"%} " alt="" class="img-fluid w-25" id = "main_img" style = "border-radius: 30px;">
+                        <img src="{% static "img/avatar.png"%} " alt="" class="img-fluid w-25" id = "avatar" style = "border-radius: 30px;">
                     </div>
 
                     <div class = "d-flex justify-content-center p-1 mb-2" style = "border-bottom: 1px solid #d4d4d4;">
@@ -72,68 +65,47 @@
                     </div>
                     {% for msg in sample %}
                         {% if msg.type == "left" %}
-                            <div class = "d-flex justify-content-start mb-3">
                                 {% if msg.highlight %}
-                                <div class = "p-2 px-4" id = "hl-msg" style = "background-color: #F6D06F; border-radius: 30px; ">
-                                    {{ msg.payload }}
+                                <div class = "d-flex justify-content-start mb-3" id = "hl-msg" >
+                                    <div class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
+                                        {{ msg.payload }}
+                                    </div>
                                 </div>
+
                                 {% else %}
-                                <div class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff; "">
-                                    {{ msg.payload }}
+                                <div class = "d-flex justify-content-start mb-3">
+                                    <div class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff; "">
+                                        {{ msg.payload }}
+                                    </div>
                                 </div>
                                 {% endif %}
                                 <!-- <div class="col-md-1" ></div> -->
                                 
-                            </div>
                         {% elif msg.type == "right" %}
-                            <div class = "d-flex justify-content-end mb-3">
                                 {% if msg.highlight %}
-                                <div class = "p-2 px-4" id = "hl-msg" style = "background-color: #F6D06F; border-radius: 30px; ">
-                                    {{ msg.payload }}
+                                <div class = "d-flex justify-content-end mb-3" id = "hl-msg" >
+                                    <div class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
+                                        {{ msg.payload }}
+                                    </div>
                                 </div>
+
                                 {% else %}
-                                <div class = "p-2 px-4" style = "background-color: #EDF6FD; border-radius: 30px;"">
-                                    {{ msg.payload }}
+                                <div class = "d-flex justify-content-end mb-3" >
+                                    <div class = "p-2 px-4" style = "background-color: #EDF6FD; border-radius: 30px;"">
+                                        {{ msg.payload }}
+                                    </div>
                                 </div>
                                 {% endif %}
-                            </div>
                         {% endif %}
                         
                     {% endfor %}
 
-                    <!-- <div class = "row p-2 w-100 float-left">
-                        <span class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff">
-                            How did you physics go?
-                        </span>
-                    </div>
-
-                    <div class = "row p-2 float-right">
-                        <span class = "p-2 px-4" style = "background-color: #EDF6FD; border-radius: 30px; ">
-                            Oh it went really well!
-                        </span>
-                    </div>
-                    
-                    <div class = "row p-2 w-100 float-left">
-                        <span class = "p-2 px-4" style = "background-color: #73B8F7; border-radius: 30px; color: #ffffff">
-                            Thanks for helping out!
-                        </span>
-                    </div>
-                    
-                    <div class = "row p-2 float-right">
-                        <p class = "p-2 px-4" style = "background-color: #F6D06F; border-radius: 30px; ">
-                            No problem!
-                        </p>
-                    </div>
-
-                    <div class = "row p-2 float-right">
-                        <img src="{% static "img/sample.gif"%} " alt="" class="img-fluid p-2 px-4" id = "main_img" style = "background-color: #F6D06F; border-radius: 30px; ">
-                    </div> -->
-
+                   
                 </div>
             </div>
             <div class="col-md-4" >
                 <h1 class = "pb-4">  Gif</h1>
-                <img src="{% static "img/sample.gif"%} " alt="" class="img-fluid" id = "main_img">
+                <!-- <img src="{% static "img/sample.gif"%} " alt="" class="img-fluid main_img"> -->
                 <p class="lead">
                     Search a Gif to replace the highlighted text
                 </p>
@@ -158,89 +130,163 @@
                 <h1 class = "pb-4"> Survey</h1>
                 <img src="sample.gif" alt="" class="img-fluid">
                
+                    <div class="form-group mb-3">
+                        <p>
+                            How much do you agree with the statement:
+                            This gif closely represents or describes the emotion I want to express.
+                        </p>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" type="radio" name="q1" id="gridRadios1" value="1">
+                                    Strongly disagree
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" type="radio" name="q1" id="gridRadios2" value="2">
+                                    Somewhat disagree
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" type="radio" name="q1" id="gridRadios2" value="3">
+                                    Neutral
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" type="radio" name="q1" id="gridRadios2" value="4">
+                                    Somewhat agree
+                                </label>
+                                <label class="form-check-label w-100">
+                                    <input class="form-check-input" type="radio" name="q1" id="gridRadios2" value="5">
+                                        Strongly agree
+                                </label>
+                                
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="input-group mb-3">
-                    <p>
-                        How much do you agree with the statement:
-                        This gif closely represents or describes the emotion I want to express.
-                    </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1">Strongly disagree</option>
-                        <option value="2">Somewhat disagree</option>
-                        <option value="3" selected>Neutral</option>
-                        <option value="4">Somewhat agree</option>
-                        <option value="4">Strongly agree</option>
-                    </select>
-                </div>
-
-                <div class="input-group mb-3">
+                <div class="form-group mb-3">
                     <p>
                         How much do you agree with the statement:
                         I would likely use the selected gif in my own conversation.
                     </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1">Strongly disagree</option>
-                        <option value="2">Somewhat disagree</option>
-                        <option value="3" selected>Neutral</option>
-                        <option value="4">Somewhat agree</option>
-                        <option value="4">Strongly agree</option>
-                    </select>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q2" id="gridRadios1" value="1">
+                                Strongly disagree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q2" id="gridRadios2" value="2">
+                                Somewhat disagree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q2" id="gridRadios2" value="3">
+                                Neutral
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q2" id="gridRadios2" value="4">
+                                Somewhat agree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q2" id="gridRadios2" value="5">
+                                    Strongly agree
+                            </label>
+                            
+                        </div>
+                    </div>
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="form-group mb-3">
                     <p>
                         How much do you agree with the statement:
                         I’m familiar with the source of the selected animated gif.
                     </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1">Strongly disagree</option>
-                        <option value="2">Somewhat disagree</option>
-                        <option value="3" selected>Neutral</option>
-                        <option value="4">Somewhat agree</option>
-                        <option value="4">Strongly agree</option>
-                    </select>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q3" id="gridRadios1" value="1">
+                                Strongly disagree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q3" id="gridRadios2" value="2">
+                                Somewhat disagree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q3" id="gridRadios2" value="3">
+                                Neutral
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q3" id="gridRadios2" value="4">
+                                Somewhat agree
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q3" id="gridRadios2" value="5">
+                                    Strongly agree
+                            </label>
+                            
+                        </div>
+                    </div>
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="form-group mb-3">
                     <p class = "w-100">
                         Have you ever used the selected gif? 
                     </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>True or False</option>
-                        <option value="1">1 - Yes</option>
-                        <option value="2">2 - No</option>
-                    </select>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q4" id="gridRadios1" value="1">
+                                True
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q4" id="gridRadios2" value="2">
+                                False
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="form-group mb-3">
                     <p class = "w-100">
                         Have you used any gifs with the same character in the selected gif?
                     </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>True or False</option>
-                        <option value="1">1 - Yes</option>
-                        <option value="2">2 - No</option>
-                    </select>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q5" id="gridRadios1" value="1">
+                                True
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q5" id="gridRadios2" value="2">
+                                False
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 
                
 
-                <div class="input-group mb-3">
+                <div class="form-group mb-3">
                     <p class = "w-100">
                         Have you seen someone using the gif that you selected?
 
                     </p>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>True or False</option>
-                        <option value="1">1 - Yes</option>
-                        <option value="2">2 - No</option>
-                    </select>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q6" id="gridRadios1" value="1">
+                                True
+                            </label>
+                            <label class="form-check-label w-100">
+                                <input class="form-check-input" type="radio" name="q6" id="gridRadios2" value="2">
+                                False
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <form method='post' action="" >
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-primary btn-lg btn-block"
-                        name="cmd" value="submit"></button>
+                    <input type = "submit" class="btn btn-primary btn-lg btn-block"
+                        name="cmd" value="submit" id = "submit"></button>
                 </form>
 
             </div>
