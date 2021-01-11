@@ -1,0 +1,13 @@
+[
+    {
+        "payload": "What are you doing tonight?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "I’m so bored. ",
+        "type": "right",
+        "highlight":true
+    }
+
+]

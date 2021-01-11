@@ -1,0 +1,13 @@
+[
+    {
+        "payload": "I got the job!",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "Congratulations!",
+        "type": "right",
+        "highlight":true
+    }
+    
+]

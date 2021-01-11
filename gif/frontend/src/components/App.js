@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
+import Study from "./Study";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,18 +32,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <ul>
-        <div>test</div>
-        {this.state.data.map((contact) => {
-          return (
-            <li key={contact.id}>
-              {contact.name} - {contact.email}
-            </li>
-          );
-        })}
-      </ul>
-    );
+    return <Study />;
   }
 }
 

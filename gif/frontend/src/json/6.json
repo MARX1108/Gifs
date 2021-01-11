@@ -1,0 +1,22 @@
+[
+    {
+        "payload": "How is your presentation going?",
+        "type": "left",
+        "highlight":false
+    },
+    {
+        "payload": "I am still working on it.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "I’m really nervous.",
+        "type": "right",
+        "highlight":false
+    },
+    {
+        "payload": "Don’t be. You’re gonna be fine",
+        "type": "left",
+        "highlight":true
+    }
+]

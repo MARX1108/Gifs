@@ -1,0 +1,191 @@
+[
+    [
+        {
+            "payload": "When are you coming back?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "You need to start packing.",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "Or we’re going to be late for the plane!",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "I’ll be back in an hour. ",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "We’re on time.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "Don’t panic",
+            "type": "right",
+            "highlight":true
+        }
+    
+    
+    ],
+    [
+        {
+            "payload": "How did your physics exam go?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "Oh, it went really well!",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "Thanks for helping out!",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "No problem!",
+            "type": "left",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "What’s your plan for New Year’s Eve?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "I bought a ticket to New York City.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "I’m going to see the city!",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "Sounds exciting!",
+            "type": "left",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "Have you finished the homework yet?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "No.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "There’re so many new concepts.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "I feel the same way.",
+            "type": "left",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "I got the job!",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "Congratulations!",
+            "type": "right",
+            "highlight":true
+        }
+        
+    ],
+    [
+        {
+            "payload": "How is your presentation going?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "I am still working on it.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "I’m really nervous.",
+            "type": "right",
+            "highlight":false
+        },
+        {
+            "payload": "Don’t be. You’re gonna be fine",
+            "type": "left",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "This is my puppy!",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "Aww! so cute!",
+            "type": "right",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "What are you doing tonight?",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "I’m so bored. ",
+            "type": "right",
+            "highlight":true
+        }
+    
+    ],
+    [
+        {
+            "payload": "I finally quit my job today. ",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "They pay me late and I'm not enjoy the work I did at all..",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "That’s a good call.",
+            "type": "right",
+            "highlight":true
+        }
+    ],
+    [
+        {
+            "payload": "I’ve been on a zoom meeting for almost 9 hours now.",
+            "type": "left",
+            "highlight":false
+        },
+        {
+            "payload": "That’s insane.",
+            "type": "right",
+            "highlight":true
+        }
+    ]
+]
