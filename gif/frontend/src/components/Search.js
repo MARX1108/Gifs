@@ -30,10 +30,7 @@ function Searchbar() {
           <img
             src={gif.images.downsized.url}
             className="img-fluid w-25"
-            onClick={() => {
-              const msg = document.getElementById("#hl-msg");
-              console.log(msg);
-            }}
+            onClick={() => {}}
           />
         ))}
       </div>
