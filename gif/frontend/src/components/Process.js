@@ -1,12 +1,14 @@
 import React, { Component, useState, useEffect } from "react";
 import { h1, instructions, defaultStyle } from "./constants";
-
-import { Card, Image } from "antd";
 import "antd/dist/antd.css";
 import conversation from "../json/conversation.json";
+import Searchbar from "./Search";
+import { Button, message } from "antd";
+import Survey from "./Survey";
+
 function Process() {
   const [steps, setSteps] = useState(0);
-
+  const [isSearching, setIsSearching] = useState(true);
   return (
     <div className="contain-fluid">
       {h1}
@@ -23,7 +25,7 @@ function Process() {
               <img
                 src="../../static/avatars/avatar.png"
                 alt=""
-                class="img-fluid w-25"
+                className="img-fluid w-25"
                 id="avatar"
                 style={{ borderRadius: "30px" }}
               />
@@ -36,9 +38,24 @@ function Process() {
             </div>
 
             <div>{renderChat(steps)}</div>
+            <Button
+              type="primary"
+              size="big"
+              style={{ width: "100%", height: "auto", fontSize: "20px" }}
+              disabled={!isSearching}
+              onClick={() => {
+                setIsSearching(false);
+                message.success("Gif submitted!");
+              }}
+            >
+              Confirm GIF Selection
+            </Button>
           </div>
         </div>
-        <div className="col-md-6" style={{ padding: "0% 2% 0% 2%" }}></div>
+        <div className="col-md-6" style={{ padding: "0% 2% 0% 2%" }}>
+          {isSearching ? <Searchbar /> : <Survey />}
+        </div>
+
         <div className="col-md-1" />
       </div>
     </div>
