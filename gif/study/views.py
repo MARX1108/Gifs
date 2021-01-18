@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.conf import settings
+from .models import Study
+from .serializers import StudySerializer
+from rest_framework import generics
 
 import json
 import os
 
 # Create your views here.
+
+
+class StudyListCreate(generics.ListCreateAPIView):
+    queryset = Study.objects.all()
+    serializer_class = StudySerializer
 
 
 def main_render(request):
@@ -14,7 +22,6 @@ def main_render(request):
 
     if request.POST.get('cmd') == 'reset':
         del request.session['step']
-    
 
     if request.POST.get('cmd') == 'reset':
         return setup(request)
