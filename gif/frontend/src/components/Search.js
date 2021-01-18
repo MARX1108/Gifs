@@ -11,8 +11,6 @@ function Searchbar() {
   let [context, setMsgContext] = useContext(hlMsgContext);
 
   const onSearch = (keyword) => {
-    debugger;
-    console.log("searched");
     axios
       .get(
         `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=xVZ2RMp67cD1t8aAn0HLuKMlrJ0DJ4ip&limit=36`

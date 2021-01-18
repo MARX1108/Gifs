@@ -9,6 +9,7 @@ export const defaultStyle = {
 };
 
 export const hlMsgContext = React.createContext(null);
+export const caseContext = React.createContext(0);
 
 export const h1 = (
   <h1

@@ -1,5 +1,11 @@
 import React, { Component, useState, useEffect, useContext } from "react";
-import { h1, instructions, defaultStyle, hlMsgContext } from "./constants";
+import {
+  h1,
+  instructions,
+  defaultStyle,
+  hlMsgContext,
+  caseContext,
+} from "./constants";
 import "antd/dist/antd.css";
 import conversation from "../json/conversation.json";
 import Searchbar from "./Search";
@@ -7,15 +13,24 @@ import { Button, message } from "antd";
 import Survey from "./Survey";
 
 function Process() {
-  const [steps, setSteps] = useState(0);
   const [isSearching, setIsSearching] = useState(true);
-  let [context, setMsgContext] = useContext(hlMsgContext);
+  const [context, setMsgContext] = useContext(hlMsgContext);
+  const [ccontext, setCaseContext] = useContext(caseContext);
+  const [oldContextValue, saveContextValue] = useState(ccontext);
+  useEffect(() => {
+    console.log(oldContextValue, ccontext);
+    if (oldContextValue != ccontext) {
+      setIsSearching(true);
+      setMsgContext(null);
+    }
+    saveContextValue(ccontext);
+  }, [ccontext]);
 
   return (
     <div className="contain-fluid">
       {h1}
       <h2 className="display-5 pb-4" style={defaultStyle}>
-        Case: {steps}
+        Case: {ccontext}
       </h2>
       {instructions}
 
@@ -38,7 +53,7 @@ function Process() {
               Alex
             </div>
 
-            <div>{renderChat(steps, context)}</div>
+            <div>{renderChat(ccontext, context)}</div>
             <Button
               type="primary"
               size="big"

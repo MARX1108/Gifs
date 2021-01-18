@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, message } from "antd";
 import "antd/dist/antd.css";
+import { caseContext, hlMsgContext } from "./constants";
 
 function Survey() {
+  let [ccontext, setCaseContext] = useContext(caseContext);
+  let [context, setMsgContext] = useContext(hlMsgContext);
+
   return (
     <div>
       <h3>How much do you agree with the statement:</h3>
@@ -247,6 +251,7 @@ function Survey() {
         style={{ width: "100%", height: "auto", fontSize: "20px" }}
         onClick={() => {
           message.success("Survey submitted!");
+          setCaseContext(ccontext + 1);
         }}
       >
         Submit Survey
