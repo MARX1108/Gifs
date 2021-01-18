@@ -1,8 +1,12 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
 from .models import Study
 from .serializers import StudySerializer
 from rest_framework import generics
+from rest_framework.decorators import api_view, renderer_classes
+
+from django.http import JsonResponse
 
 import json
 import os
@@ -13,6 +17,16 @@ import os
 class StudyListCreate(generics.ListCreateAPIView):
     queryset = Study.objects.all()
     serializer_class = StudySerializer
+
+
+def request_handler(request):
+    # print('RECEIVED REQUEST: ' + request.method)
+    if request.method == 'POST':
+        print(request.POST.get("keyword"))
+    return JsonResponse({
+        "success": 1
+    }
+    )
 
 
 def main_render(request):

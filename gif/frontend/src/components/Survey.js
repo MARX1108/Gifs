@@ -252,6 +252,7 @@ function Survey() {
         onClick={() => {
           message.success("Survey submitted!");
           setCaseContext(ccontext + 1);
+          
         }}
       >
         Submit Survey

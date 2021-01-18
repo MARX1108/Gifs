@@ -6,6 +6,22 @@ import "antd/dist/antd.css";
 import axios from "axios";
 import { hlMsgContext } from "./constants";
 
+function getCookie(name) {
+  var cookieValue = null;
+  console.log("document.cookie: " + document.cookie);
+  if (document.cookie && document.cookie !== "") {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === name + "=") {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
 function Searchbar() {
   const [gifresults, setResults] = useState([]);
   let [context, setMsgContext] = useContext(hlMsgContext);
@@ -16,6 +32,22 @@ function Searchbar() {
         `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=xVZ2RMp67cD1t8aAn0HLuKMlrJ0DJ4ip&limit=36`
       )
       .then((res) => setResults(res.data.data));
+    // debugger;
+    axios
+      .post(
+        "api",
+        {
+          keyword: keyword,
+        },
+        {
+          headers: {
+            // Accept: "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+        }
+      )
+      .then((res) => console.log(res));
   };
   return (
     <div>
