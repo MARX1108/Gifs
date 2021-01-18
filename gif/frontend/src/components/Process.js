@@ -26,7 +26,9 @@ function Process() {
     saveContextValue(ccontext);
   }, [ccontext]);
 
-  return (
+  return ccontext >= 9 ? (
+    finishPrompt
+  ) : (
     <div className="contain-fluid">
       {h1}
       <h2 className="display-5 pb-4" style={defaultStyle}>
@@ -106,3 +108,21 @@ function renderChat(index, hlMsg) {
 }
 
 export default Process;
+
+export const finishPrompt = (
+  <div>
+    {h1}
+    <div class="container pt-4 mt-4" style={defaultStyle}>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <p>
+            This is the end of the study. <br /> Thanks for your time and
+            participation!
+          </p>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+);
