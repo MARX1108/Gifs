@@ -2,14 +2,18 @@ import React, { Component, useState, useEffect } from "react";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import Process from "./Process";
-import { h1, defaultStyle } from "./constants";
+import { h1, defaultStyle, hlMsgContext } from "./constants";
 
 function Study() {
   const [InProgress, setInProgress] = useState(false);
+  const [context, setMsgContext] = useState(null);
+
   return (
     <div className="contain-fluid">
       {InProgress ? (
-        <Process />
+        <hlMsgContext.Provider value={[context, setMsgContext]}>
+          <Process />
+        </hlMsgContext.Provider>
       ) : (
         <div>
           {h1}

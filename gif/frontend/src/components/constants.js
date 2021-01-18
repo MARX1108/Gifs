@@ -8,6 +8,8 @@ export const defaultStyle = {
   fontSize: "30px",
 };
 
+export const hlMsgContext = React.createContext(null);
+
 export const h1 = (
   <h1
     className="display-5 pt-4"

@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import { h1, instructions, defaultStyle } from "./constants";
+import React, { Component, useState, useEffect, useContext } from "react";
+import { h1, instructions, defaultStyle, hlMsgContext } from "./constants";
 import "antd/dist/antd.css";
 import conversation from "../json/conversation.json";
 import Searchbar from "./Search";
@@ -9,6 +9,8 @@ import Survey from "./Survey";
 function Process() {
   const [steps, setSteps] = useState(0);
   const [isSearching, setIsSearching] = useState(true);
+  let [context, setMsgContext] = useContext(hlMsgContext);
+
   return (
     <div className="contain-fluid">
       {h1}
@@ -24,7 +26,6 @@ function Process() {
             <div className="d-flex justify-content-center">
               <img
                 src="../../static/avatars/avatar.png"
-                alt=""
                 className="img-fluid w-25"
                 id="avatar"
                 style={{ borderRadius: "30px" }}
@@ -37,7 +38,7 @@ function Process() {
               Alex
             </div>
 
-            <div>{renderChat(steps)}</div>
+            <div>{renderChat(steps, context)}</div>
             <Button
               type="primary"
               size="big"
@@ -62,8 +63,9 @@ function Process() {
   );
 }
 
-function renderChat(index) {
+function renderChat(index, hlMsg) {
   let chat = conversation[index];
+  const img = <img src={hlMsg} />;
   return chat.map((msg) => {
     let msgClass =
       msg.type == "left"
@@ -78,7 +80,7 @@ function renderChat(index) {
     return (
       <div className={msgClass} id={msg.highlight ? "hl-msg" : null}>
         <div className="p-2 px-4" style={msgStyle}>
-          {msg.payload}
+          {msg.highlight && hlMsg ? img : msg.payload}
         </div>
       </div>
     );
