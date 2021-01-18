@@ -13,7 +13,7 @@ function Process() {
     <div className="contain-fluid">
       {h1}
       <h2 className="display-5 pb-4" style={defaultStyle}>
-        Steps: {steps}
+        Case: {steps}
       </h2>
       {instructions}
 

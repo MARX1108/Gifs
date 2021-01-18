@@ -11,3 +11,4 @@ class Study(models.Model):
     q3 = models.PositiveSmallIntegerField()
     q4 = models.PositiveSmallIntegerField()
     q5 = models.PositiveSmallIntegerField()
+
