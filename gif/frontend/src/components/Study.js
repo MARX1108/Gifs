@@ -2,13 +2,35 @@ import React, { Component, useState, useEffect } from "react";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 import Process from "./Process";
-import { h1, defaultStyle, hlMsgContext, caseContext } from "./constants";
+import {
+  h1,
+  defaultStyle,
+  hlMsgContext,
+  caseContext,
+  getCookie,
+} from "./constants";
+import axios from "axios";
 
 function Study() {
   const [InProgress, setInProgress] = useState(false);
   const [context, setMsgContext] = useState(null);
   const [ccontext, setCaseContext] = useState(0);
-
+  const start = () => {
+    setInProgress(true);
+    axios
+      .post(
+        "api",
+        {
+          start: 1,
+        },
+        {
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+        }
+      )
+      .then((res) => console.log(res));
+  };
   return (
     <div className="contain-fluid">
       {InProgress ? (
@@ -34,7 +56,7 @@ function Study() {
                   type="primary"
                   size="big"
                   style={{ width: "100%", height: "auto", fontSize: "20px" }}
-                  onClick={() => setInProgress(true)}
+                  onClick={() => start()}
                 >
                   Start
                 </Button>

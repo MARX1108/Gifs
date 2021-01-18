@@ -20,9 +20,10 @@ class StudyListCreate(generics.ListCreateAPIView):
 
 
 def request_handler(request):
-    # print('RECEIVED REQUEST: ' + request.method)
+    data = json.loads(request.body)
     if request.method == 'POST':
-        print(request.POST.get("keyword"))
+        print(data['start'])
+
     return JsonResponse({
         "success": 1
     }
