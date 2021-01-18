@@ -21,11 +21,13 @@ class StudyListCreate(generics.ListCreateAPIView):
 
 def request_handler(request):
     data = json.loads(request.body)
-    if request.method == 'POST':
-        print(data['start'])
+    if 'start' in data:
+        a = Study.objects.create()
+        a.save()
+        print(a.id)
 
     return JsonResponse({
-        "success": 1
+        "ID": a.id
     }
     )
 
