@@ -45,8 +45,11 @@ function Process() {
               style={{ width: "100%", height: "auto", fontSize: "20px" }}
               disabled={!isSearching}
               onClick={() => {
-                setIsSearching(false);
-                message.success("Gif submitted!");
+                if (!context) message.error("Selected an Gif before submit");
+                else {
+                  setIsSearching(false);
+                  message.success("Gif submitted!");
+                }
               }}
             >
               Confirm GIF Selection
@@ -65,7 +68,7 @@ function Process() {
 
 function renderChat(index, hlMsg) {
   let chat = conversation[index];
-  const img = <img src={hlMsg} />;
+  const img = <img src={hlMsg} style={{ width: "90%" }} />;
   return chat.map((msg) => {
     let msgClass =
       msg.type == "left"
