@@ -4,9 +4,10 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        // use: {
+        //   loader: ["react-hot", "babel-loader"],
+        // },
+        use: ["babel-loader"],
       },
       {
         test: /\.css$/i,

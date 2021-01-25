@@ -5,5 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.main_render, name='index'),
-    # url(r'^start', views.start, name='start'),
+    path('api/view', views.StudyListCreate.as_view()),
+    path('api', views.request_handler),
+
 ]

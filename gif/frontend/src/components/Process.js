@@ -1,5 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
-import { h1, instructions, defaultStyle } from "./constants";
+import React, { Component, useState, useEffect, useContext } from "react";
+import {
+  h1,
+  instructions,
+  defaultStyle,
+  hlMsgContext,
+  caseContext,
+} from "./constants";
 import "antd/dist/antd.css";
 import conversation from "../json/conversation.json";
 import Searchbar from "./Search";
@@ -7,13 +13,26 @@ import { Button, message } from "antd";
 import Survey from "./Survey";
 
 function Process() {
-  const [steps, setSteps] = useState(0);
   const [isSearching, setIsSearching] = useState(true);
-  return (
+  const [context, setMsgContext] = useContext(hlMsgContext);
+  const [ccontext, setCaseContext] = useContext(caseContext);
+  const [oldContextValue, saveContextValue] = useState(ccontext);
+  useEffect(() => {
+    console.log(oldContextValue, ccontext);
+    if (oldContextValue != ccontext) {
+      setIsSearching(true);
+      setMsgContext(null);
+    }
+    saveContextValue(ccontext);
+  }, [ccontext]);
+
+  return ccontext >= 9 ? (
+    finishPrompt
+  ) : (
     <div className="contain-fluid">
       {h1}
       <h2 className="display-5 pb-4" style={defaultStyle}>
-        Case: {steps}
+        Case: {ccontext}
       </h2>
       {instructions}
 
@@ -24,7 +43,6 @@ function Process() {
             <div className="d-flex justify-content-center">
               <img
                 src="../../static/avatars/avatar.png"
-                alt=""
                 className="img-fluid w-25"
                 id="avatar"
                 style={{ borderRadius: "30px" }}
@@ -37,15 +55,18 @@ function Process() {
               Alex
             </div>
 
-            <div>{renderChat(steps)}</div>
+            <div>{renderChat(ccontext, context)}</div>
             <Button
               type="primary"
               size="big"
               style={{ width: "100%", height: "auto", fontSize: "20px" }}
               disabled={!isSearching}
               onClick={() => {
-                setIsSearching(false);
-                message.success("Gif submitted!");
+                if (!context) message.error("Selected an Gif before submit");
+                else {
+                  setIsSearching(false);
+                  message.success("Gif submitted!");
+                }
               }}
             >
               Confirm GIF Selection
@@ -62,8 +83,9 @@ function Process() {
   );
 }
 
-function renderChat(index) {
+function renderChat(index, hlMsg) {
   let chat = conversation[index];
+  const img = <img src={hlMsg} style={{ width: "90%" }} />;
   return chat.map((msg) => {
     let msgClass =
       msg.type == "left"
@@ -78,7 +100,7 @@ function renderChat(index) {
     return (
       <div className={msgClass} id={msg.highlight ? "hl-msg" : null}>
         <div className="p-2 px-4" style={msgStyle}>
-          {msg.payload}
+          {msg.highlight && hlMsg ? img : msg.payload}
         </div>
       </div>
     );
@@ -86,3 +108,21 @@ function renderChat(index) {
 }
 
 export default Process;
+
+export const finishPrompt = (
+  <div>
+    {h1}
+    <div class="container pt-4 mt-4" style={defaultStyle}>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <p>
+            This is the end of the study. <br /> Thanks for your time and
+            participation!
+          </p>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+);
