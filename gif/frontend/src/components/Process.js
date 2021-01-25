@@ -12,7 +12,7 @@ import Searchbar from "./Search";
 import { Button, message } from "antd";
 import Survey from "./Survey";
 
-function Process() {
+function Process(props) {
   const [isSearching, setIsSearching] = useState(true);
   const [context, setMsgContext] = useContext(hlMsgContext);
   const [ccontext, setCaseContext] = useContext(caseContext);
@@ -25,6 +25,7 @@ function Process() {
     }
     saveContextValue(ccontext);
   }, [ccontext]);
+  const { ID } = props;
 
   return ccontext >= 9 ? (
     finishPrompt
@@ -32,7 +33,7 @@ function Process() {
     <div className="contain-fluid">
       {h1}
       <h2 className="display-5 pb-4" style={defaultStyle}>
-        Case: {ccontext}
+        Case: {ccontext} ID: {ID}
       </h2>
       {instructions}
 

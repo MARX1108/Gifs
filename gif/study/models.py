@@ -9,6 +9,7 @@ from django.utils import timezone
 
 
 class Study(models.Model):
+    # TODO: searchImageUrl
     searchKey = ArrayField(models.CharField(max_length=300), default=list)
     timeStamps = ArrayField(models.TimeField(), default=list)
     q1 = models.PositiveSmallIntegerField(default=10)

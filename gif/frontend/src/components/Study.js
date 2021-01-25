@@ -15,8 +15,9 @@ function Study() {
   const [InProgress, setInProgress] = useState(false);
   const [context, setMsgContext] = useState(null);
   const [ccontext, setCaseContext] = useState(0);
+  const [StudyId, setID] = useState(-1);
+
   const start = () => {
-    setInProgress(true);
     axios
       .post(
         "api",
@@ -29,14 +30,17 @@ function Study() {
           },
         }
       )
-      .then((res) => console.log(res));
+      .then((res) => {
+        setID(res.data.StudyID);
+        setInProgress(true);
+      });
   };
   return (
     <div className="contain-fluid">
       {InProgress ? (
         <caseContext.Provider value={[ccontext, setCaseContext]}>
           <hlMsgContext.Provider value={[context, setMsgContext]}>
-            <Process />
+            <Process ID={StudyId} />
           </hlMsgContext.Provider>
         </caseContext.Provider>
       ) : (

@@ -27,7 +27,7 @@ def request_handler(request):
         print(a.id)
 
     return JsonResponse({
-        "ID": a.id
+        "StudyID": a.id
     }
     )
 
